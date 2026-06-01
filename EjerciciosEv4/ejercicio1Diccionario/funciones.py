@@ -3,9 +3,20 @@ productos={}
 def agregandoProducto(nombre,stock,precio):
     """Agrega producto nuevo 
     usando el "nombre":[stock,precio] """
+    if nombre in productos:
+        print("ya se encuentra ese producto en la base de datos")
+        return
     productos[nombre]=[stock,precio]
+    print("Producto agregado correctamente")
     return productos
 
+# funcion mostrar los productos
+
+def mostrarProductos():
+     """"Recorre la lista y muestra todos los productos"""
+     producto=""
+     for i in productos:
+          print("Producto: ",i,": stock:",productos[i][0],", valor: $",productos[i][1])
 
 # funcion para buscar un producto
 def buscarProducto(nombre):
