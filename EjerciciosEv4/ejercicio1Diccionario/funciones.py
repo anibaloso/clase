@@ -1,4 +1,5 @@
 productos={}
+
 # funcion que agrega producto
 def agregandoProducto(nombre,stock,precio):
     """Agrega producto nuevo 
@@ -6,6 +7,7 @@ def agregandoProducto(nombre,stock,precio):
     if nombre in productos:
         print("ya se encuentra ese producto en la base de datos")
         return
+    
     productos[nombre]=[stock,precio]
     print("Producto agregado correctamente")
     return productos
@@ -15,19 +17,24 @@ def agregandoProducto(nombre,stock,precio):
 def mostrarProductos():
      """"Recorre la lista y muestra todos los productos"""
      producto=""
-     for i in productos:
+     if productos == {}:
+          print("Aun no hay ningun registro guardado")
+     else:
+        for i in productos:
           print("Producto: ",i,": stock:",productos[i][0],", valor: $",productos[i][1])
 
 # funcion para buscar un producto
 def buscarProducto(nombre):
     """usando el nombre del producto como parametro se recorre 
     un ciclo for hasta encontrar el producto, o devolver un error"""
-
-    for i in productos:
-        if nombre in productos:
-            return f"{nombre}", productos[nombre]
-        else:
-            return print("Producto no encontrado")
+    if productos == {}:
+          print("Aun no hay ningun registro guardado")
+    else:
+        for i in productos:
+            if nombre in productos:
+                return f"{nombre}", productos[nombre]
+            else:
+                return print("Producto no encontrado")
 
 # funcion para buscar producto mas caro
 def productoMasCaro():

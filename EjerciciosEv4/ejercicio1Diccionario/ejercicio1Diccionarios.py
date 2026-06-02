@@ -1,13 +1,8 @@
 import funciones as fn
 
-# TODO:Validaciones obligatorias
-
-# TODO:El stock debe ser un numero entero mayor o igual a 0.
-# TODO:El precio debe ser un numero mayor que 0.
-# TODO:La opcion del menu debe estar entre 1 y 5.
 # TODO:Si no existen productos registrados, las opciones mostrar, buscar y producto mas caro deben indicarlo correctamente
 
-productos={}
+# productos={}
 producto=""
 stock=0
 valor=0
@@ -31,9 +26,26 @@ while opcion!=5:
             producto=input("Ingrese nombre del producto: ")
             if producto=="":
                 print("El nombre del producto no puede estar vacio")
-        
-        stock=int(input("Ingrese el stock del producto: "))
-        valor=int(input("Ingrese el valor del producto: "))
+        while True:
+            try:
+                stock=int(input("Ingrese el stock del producto: "))
+            except ValueError:
+                print("El valor del stock solo puede ser numeros y enteros")
+                continue
+            if stock<0:
+                print("El stock del producto debe ser entero y mayor o igual a 0")
+            else:
+                break
+        while True:
+            try:
+                valor=int(input("Ingrese el valor del producto: "))
+            except ValueError:
+                print("el valor del producto solo puede ser numeros")
+                continue
+            if valor<=0:
+                print("El valor del producto debe ser entero y mayor 0")
+            else:
+                break
         productos=fn.agregandoProducto(producto,stock,valor)
         producto=""
 
@@ -41,13 +53,19 @@ while opcion!=5:
         fn.mostrarProductos()
 
     elif opcion==3:
+
+        # ##############--Arreglar esto--##########################
+        fn.buscarProducto(nombre)
+        
         nombre=input("Ingrese el producto que desea buscar: ")
         print(fn.buscarProducto(nombre))
-
+        # ##############-----------------########################## 
     elif opcion==4:
         print(fn.productoMasCaro())
+
     elif opcion==5:
         print("Saliendo gracias por usar nuestro programa")
         break
+
     else:
         print("Ingrese una opcion valida")
