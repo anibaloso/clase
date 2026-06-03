@@ -27,15 +27,14 @@ def mostrarProductos():
 def buscarProducto(nombre):
     """usando el nombre del producto como parametro se recorre 
     un ciclo for hasta encontrar el producto, o devolver un error"""
-    if productos == {}:
-          print("Aun no hay ningun registro guardado")
-    else:
-        for i in productos:
-            if nombre in productos:
-                return f"{nombre}", productos[nombre]
-            else:
-                return print("Producto no encontrado")
-
+    
+    revisarProductos()
+    if revisarProductos()==True:
+        if nombre in productos:
+            print("Producto: ",nombre,
+                ": stock:",productos[nombre][0],
+                ", valor: $",productos[nombre][1])
+      
 # funcion para buscar producto mas caro
 def productoMasCaro():
     """Recorrera dos ciclos for comparando y almacenando el mas caro"""
@@ -46,3 +45,11 @@ def productoMasCaro():
                 numMayor=productos[i][1]
                 productoCaro=i
     return f"El producto con el valor mayor es : {productoCaro} a ${numMayor}"
+
+# funcion para revisar si hay algun producto
+def revisarProductos():
+    if productos == {}:
+          print("Aun no hay ningun registro guardado")
+          return False
+    return True
+    

@@ -1,7 +1,5 @@
 import funciones as fn
 
-# TODO:Si no existen productos registrados, las opciones mostrar, buscar y producto mas caro deben indicarlo correctamente
-
 # productos={}
 producto=""
 stock=0
@@ -53,14 +51,17 @@ while opcion!=5:
         fn.mostrarProductos()
 
     elif opcion==3:
-
-        # ##############--Arreglar esto--##########################
-        fn.buscarProducto(nombre)
         
+        if not fn.revisarProductos():
+            continue
         nombre=input("Ingrese el producto que desea buscar: ")
-        print(fn.buscarProducto(nombre))
-        # ##############-----------------########################## 
+        fn.buscarProducto(nombre)
+
+
     elif opcion==4:
+        
+        if not fn.revisarProductos():
+            continue
         print(fn.productoMasCaro())
 
     elif opcion==5:
