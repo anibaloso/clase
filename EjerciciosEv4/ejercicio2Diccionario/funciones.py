@@ -22,9 +22,31 @@ def ver_promedios():
             sumaNotas=sumaNotas+nota
         promedio=sumaNotas/len(alumnos[alumno])
         print(f"El alumno {alumno} tiene promedio: {promedio}")
-        return promedio
-def mejor_alumno():
-    print(ver_promedios())
     
+    return promedio
+    
+    
+def mejor_alumno():
+    mejorPromedio=0
+    mejorAlumno=""
+    for alumno in alumnos:
+        promedio=0
+        for nota in alumnos[alumno]:
+            promedio=promedio+nota
+        promedio=promedio/len(alumnos[alumno])
+        if mejorPromedio<promedio:
+            mejorPromedio=promedio
+            mejorAlumno=alumno
+    print(f"el mejor alumno es {mejorAlumno} con promedio {mejorPromedio}")
+
+
 def cantidad_aprobados():
-    print("")
+    aprobados=0
+    for alumno in alumnos:
+        promedio=0
+        for nota in alumnos[alumno]:
+            promedio=promedio+nota
+        promedio=promedio/len(alumnos[alumno])
+        if promedio>=4.0:
+            aprobados+=1       
+    print(f"La cantidad de alumnos aprobados es : {aprobados}")

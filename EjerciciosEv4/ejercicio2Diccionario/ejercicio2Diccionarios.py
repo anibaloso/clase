@@ -23,7 +23,7 @@ while True:
         fn.mejor_alumno()
     elif opcion==5:
         print("5. Cantidad de aprobados")
-        fn.cantidad_aprobados
+        fn.cantidad_aprobados()
     elif opcion==6:
         print("Salimos")
         break        
