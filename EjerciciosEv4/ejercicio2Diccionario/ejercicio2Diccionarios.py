@@ -8,7 +8,12 @@ while True:
     print("4. Mejor alumno")
     print("5. Cantidad de aprobados")
     print("6. Salir")
-    opcion=int(input("Ingrese una opcion de 1-6: "))
+    while True:
+        try:
+            opcion=int(input("Ingrese una opcion de 1-6: "))
+            break
+        except ValueError:
+            print("Error, solo puede ser un numero entero de 1 al 6")
     if opcion==1:
         print("1. Agregar alumno")
         fn.agregar_alumno()
