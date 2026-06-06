@@ -4,9 +4,11 @@ alumnos={}
 def agregar_alumno():
     
     while True:
-        alumno=input("Ingrese nombre del alumno: ")
+        alumno=input("Ingrese nombre del alumno: ").strip()
         if alumno=="":
             print("El nombre del alumno no puede estar vacio. Intentelo nuevamente")
+        elif alumno.isdigit():
+            print("Solo pueden ser letras. Intentelo nuevamente")
         elif alumno in alumnos:
             print("Este alumno ya existe. Intentelo nuevamente")
             
@@ -37,6 +39,21 @@ def agregar_alumno():
                     print(f"El alumno {alumno} fue agregado correctamente")
                     return alumnos
 
+# se crea funcion para validar nota
+# def validaNota():
+#     while True:
+#         try:
+#             nota=float(input(f"Ingrese la nota {i+1} : "))
+#             if nota>=1.0 and nota<=7.0:
+#                 notas.append(nota)
+#                 break
+#             else:
+#                 print("La nota solo puede ser entre 1.0 y 7.0")
+#         except ValueError:
+#             print("Error, la nota solo puede ser un digito")
+#             continue
+
+
 
 # funcion para mostrar todos los alumnos    
 def mostrar_alumnos():
@@ -45,7 +62,20 @@ def mostrar_alumnos():
     else:
         for alumno in alumnos:
             print(f"Alumno {alumno}, notas: {alumnos[alumno]}")
-        
+
+
+# ********************************************************************************************
+# funcion mostrar alumnos con parametro
+# def mostrar_alumnos(alumnos):
+#     if not alumnos :
+#         print("Aun no hay ningun alumno registrado")
+#     else:
+#         for alumno in alumnos:
+#             print(f"Alumno {alumno}, notas: {alumnos[alumno]}")
+# ********************************************************************************************
+
+
+
 # funcion para mostrar los promedios de los alumnos
 def ver_promedios():
     if not alumnos :
@@ -58,8 +88,19 @@ def ver_promedios():
             promedio=sumaNotas/len(alumnos[alumno])
             print(f"El alumno {alumno} tiene promedio: {promedio}")
         
-        return promedio
-    
+
+# ********************************************************************************************
+# funcion para mostrar los promedios de los alumnos
+# def ver_promedios(alumnos):
+#     if not alumnos :
+#         print("Aun no hay ningun alumno registrado")
+#         return
+#     for alumno in alumnos:
+#         promedio=sum(alumnos[alumno])/len(alumnos[alumno])
+#         print(f"El alumno {alumno} tiene promedio: {round(promedio,2)}")
+# ********************************************************************************************
+        
+
 # funcion para mostrar el mejor promedio de los alumnos
 def mejor_alumno():
     if not alumnos :
