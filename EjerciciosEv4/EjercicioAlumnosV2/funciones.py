@@ -1,3 +1,5 @@
+import base_datos as bd
+
 def agregar_alumno(alumnos):
     while True:
         nombre=input("Ingrese nombre del alumno: ")
@@ -98,3 +100,20 @@ def promedio_alumno(alumnos,alumno):
     
     """
     return sum(alumnos[alumno])/len(alumnos[alumno])
+
+def agregar_alumno_db():
+    nombre=input("Ingrese nombre del alumno: ")
+    curso=input("Ingrese el curso del alumno: ")
+    bd.agregar_alumno(nombre,curso)
+    
+def agregar_nota_alumno_db():
+    id=int(input("ingrese el id del alumno: "))
+    nota=float(input("ingrese la nota del alumno: "))
+    bd.agregar_nota_alumno(id,nota)
+    
+    
+def ver_notas_alumno_db():
+    id_alumno=int(input("Ingrese el id del alumno para ver sus notas: "))
+    notas=bd.ver_notas_alumno_db(id_alumno)
+    for nota in notas:
+        print(nota)
